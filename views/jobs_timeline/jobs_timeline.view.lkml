@@ -10,7 +10,7 @@ view: jobs_timeline {
   derived_table: {
     sql:
       SELECT *
-      FROM `region-@{REGION}.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_@{SCOPE}`
+      FROM `@{BILLING_PROJECT_ID}.region-@{REGION}.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_@{SCOPE}`
       WHERE job_creation_time >= TIMESTAMP_SUB({% date_start date.date_filter %}, INTERVAL @{MAX_JOB_LOOKBACK})
       AND job_creation_time <= {% date_end date.date_filter %}
      ;;
@@ -21,7 +21,7 @@ view: jobs_timeline_in_project {
   derived_table: {
     sql:
       SELECT *
-      FROM `region-@{REGION}.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_PROJECT`
+      FROM `@{BILLING_PROJECT_ID}.region-@{REGION}.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_PROJECT`
       WHERE job_creation_time >= TIMESTAMP_SUB({% date_start date.date_filter %}, INTERVAL @{MAX_JOB_LOOKBACK})
       AND job_creation_time <= {% date_end date.date_filter %}
      ;;
@@ -32,7 +32,7 @@ view: jobs_timeline_in_organization{
   derived_table: {
     sql:
       SELECT *
-      FROM `region-@{REGION}.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_ORGANIZATION`
+      FROM `@{BILLING_PROJECT_ID}.region-@{REGION}.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_ORGANIZATION`
       WHERE job_creation_time >= TIMESTAMP_SUB({% date_start date.date_filter %}, INTERVAL @{MAX_JOB_LOOKBACK})
       AND job_creation_time <= {% date_end date.date_filter %}
      ;;

@@ -2,7 +2,7 @@
 
 constant: CONNECTION {
   # Enter the name of the Looker connection to use
-  value: "looker_app_2"
+  value: "system-activity-analytics"
   export: override_optional
 }
 
@@ -19,7 +19,7 @@ constant: SCOPE {
 }
 constant: BILLING_PROJECT_ID {
   # This is used to reference Capacity Commitment data (for flat-rate billing) to compare slot usage against
-  value: " "
+  value: "looker-private-demo"
   export: override_optional
 }
 constant: RESERVATION_ADMIN_PROJECT  {
