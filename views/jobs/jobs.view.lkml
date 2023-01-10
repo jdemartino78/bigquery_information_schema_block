@@ -432,12 +432,12 @@ view: jobs_base {
 
   dimension: looker_history_id {
     group_label: "Looker Context"
-    label: "Looker History ID"
+    label: "Looker History Slug"
     description: "The Looker history ID, extracted from the context comment in the Labels field, if available. Note: Only available at the PROJECT scope"
     # https://docs.looker.com/admin-options/server/usage#sql_comments
     type: string
     # Unnest from Labels Method:
-    sql: (SELECT value from UNNEST(${TABLE}.labels) as label where label.key = 'looker-context-history_id') ;;
+    sql: (SELECT value from UNNEST(${TABLE}.labels) as label where label.key = 'looker-context-history_slug') ;;
     # Regex Method:
     # sql:{% if "@{SCOPE}" != "PROJECT"%} "Query text is only available at PROJECT scope " {%
     #   else %} REGEXP_EXTRACT( ${query_raw}, r'"history_id":\s*(\d*)' ) {% endif %};;
@@ -463,7 +463,7 @@ view: jobs_base {
     # https://docs.looker.com/admin-options/server/usage#sql_comments
     type: string
     # Unnest from Labels Method:
-    sql: (SELECT value FROM UNNEST(${TABLE}.labels) as label WHERE label.key = 'looker-context-instance_slug') as instance_slug ;;
+    sql: (SELECT value FROM UNNEST(${TABLE}.labels) as label WHERE label.key = 'looker-context-instance_slug') ;;
     # Regex Method:
     # sql:{% if "@{SCOPE}" != "PROJECT"%} "Query text is only available at PROJECT scope " {%
     #   else %} REGEXP_EXTRACT( ${query_raw}, r'"instance_slug":\s*"([^"]*)"' ) {% endif %};;
